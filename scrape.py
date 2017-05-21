@@ -3,22 +3,10 @@ import json
 import sys
 import urllib.request
 import xml.etree.ElementTree as ET
-from collections import defaultdict, namedtuple, OrderedDict
+from collections import defaultdict, OrderedDict
 
 
-Book = namedtuple(
-    'Book',
-    [
-      'title',
-      'author',
-      'year_read',
-      'year_published',
-      'thumbnail_url',
-      'link',
-      'isbn',
-      'num_pages'
-    ]
-)
+from model import Book
 
 
 def fetch_file(url):
@@ -47,7 +35,7 @@ def extract_books(xml_root):
         author = item.find('author_name').text
         link = item.find('link').text
         num_pages = item.find('book').find('num_pages').text
-        thumbnail_url = item.find('book_medium_image_url').text
+        thumbnail_url = item.find('book_large_image_url').text
         year_published = int(item.find('book_published').text)
         user_read_at = parse_date(item.find('user_read_at').text)
         user_read_at_year = user_read_at.year if user_read_at else 0
