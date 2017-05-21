@@ -35,7 +35,7 @@ def extract_books(xml_root):
         author = item.find('author_name').text
         link = item.find('link').text
         num_pages = item.find('book').find('num_pages').text
-        thumbnail_url = item.find('book_large_image_url').text
+        thumbnail_url = item.find('book_medium_image_url').text
         year_published = int(item.find('book_published').text)
         user_read_at = parse_date(item.find('user_read_at').text)
         user_read_at_year = user_read_at.year if user_read_at else 0
