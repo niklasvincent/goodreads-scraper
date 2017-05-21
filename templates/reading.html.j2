@@ -1,0 +1,23 @@
+---
+title: "Reading"
+layout: default
+---
+
+{% for year, books in books_by_year.items() %}
+    {% if year == 'Earlier' %}
+    <h2>{{ year }}</h2>
+    {% else %}
+    <h2>{{ year }} <span class="book__pages">{{ pages_per_day[year] }} pages per day</span></h2>
+    {% endif %}
+    <table class="books__table">
+    {% for book_row in books | batch(4) %}
+            <tr>
+                {% for book in book_row %}
+                <td>
+                    <a target="_blank" href="{{ book.link }}"><img alt="{{ book.title }}" class="book__cover" src="{{ book.cover }}" /></a>
+                </td>
+                {% endfor %}
+            </tr>
+    {% endfor %}
+    </table>
+{% endfor %}
