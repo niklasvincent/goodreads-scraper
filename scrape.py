@@ -24,6 +24,10 @@ def parse_date(string):
     return datetime.datetime.strptime(string, "%a, %d %b %Y %H:%M:%S %z").date()
 
 
+def get_with_default(value, default):
+    return value if value else default
+
+
 def extract_books(xml_root):
     def str2int(i):
         return 0 if not i else int(i)
@@ -36,7 +40,7 @@ def extract_books(xml_root):
         link = item.find('link').text
         num_pages = item.find('book').find('num_pages').text
         thumbnail_url = item.find('book_medium_image_url').text
-        year_published = int(item.find('book_published').text)
+        year_published = int(get_with_default(item.find('book_published').text, 0))
         user_read_at = parse_date(item.find('user_read_at').text)
         user_read_at_year = user_read_at.year if user_read_at else 0
         books.append(Book(
