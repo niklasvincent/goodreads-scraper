@@ -1,5 +1,5 @@
 appdirs==1.4.3
-Jinja2==2.11.0
+Jinja2==2.11.1
 MarkupSafe==1.1.1
 packaging==20.1
 pyparsing==2.4.6
