@@ -1,6 +1,6 @@
 appdirs==1.4.3
 Jinja2==2.11.1
 MarkupSafe==1.1.1
-packaging==20.2
+packaging==20.3
 pyparsing==2.4.6
 six==1.14.0
